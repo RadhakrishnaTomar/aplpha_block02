@@ -1,25 +1,33 @@
- <%= form_with model: @article, local: true do |form| %>
-  <% if @article.errors.any? %> 
-  <h2>The following errors prevented the article from being saved</h2> 
-  <ul> 
-    <% @article.errors.full_messages.each do |msg| %> 
-     <li><%= msg %></li> 
-    <% end %> 
-  </ul>
-<% end %>
+<div class="container">
+	<div id="page-content">
+		<h3 class="text-center">Create a new article </h3>
 
-	<div>
-		<%= form.label :title %><br>
-		<%= form.text_field :title %>
-		<% @article.errors.full_messages.each do |msg| %>
-	<%= msg %>
-	<% end %>
+		<div class="row justify-content-center">
+		 <%= form_with model: @article, local: true do |form| %>
+		  <% if @article.errors.any? %> 
+		  <h2>The following errors prevented the article from being saved</h2> 
+		  <ul> 
+		    <% @article.errors.full_messages.each do |msg| %> 
+		     <li><%= msg %></li> 
+		    <% end %> 
+		  </ul>
+		<% end %>
+	<div class="form-group">
+				<div class="form-group-row">
+						<%= form.label :title,class: "col-2 col-form-label" %>
+						<div class="col-10">
+						<%= form.text_field :title %>
+			      </div>
+				</div>
+			   <div>
+					<%= form.label :description %><br>
+					<%= form.text_field :description %>
+				</div>
+				<div>
+					<%= form.submit %>
+				</div>
+			 <%end%>
+		</div>
 	</div>
-   <div>
-		<%= form.label :description %><br>
-		<%= form.text_field :description %>
-	</div>
-	<div>
-		<%= form.submit %>
-	</div>
- <%end%>
+</div>
+</div>

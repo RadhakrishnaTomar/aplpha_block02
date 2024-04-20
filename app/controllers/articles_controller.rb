@@ -10,10 +10,11 @@ class ArticlesController < ApplicationController
     end
 
     def create
-      @article = Article.new(article_params) 
+      @article = Article.new(article_params)
+     @article.user = User.first 
       if @article.save
-      	flash[:ontice] = "data create succesfully"
-      	redirect_to root_path
+      	flash[:notice] = "data create succesfully"
+      	redirect_to articles_path
       else
       	render :new,status: :unprocessable_entity
       end
@@ -29,7 +30,7 @@ class ArticlesController < ApplicationController
  
  	   if @article.update(article_params)
  	   	flash[:ontice] = "update succesfully"
- 		redirect_to root_path
+ 		redirect_to articles_path
  	else
  		render :edit,status: :unprocessable_entity
  	end
